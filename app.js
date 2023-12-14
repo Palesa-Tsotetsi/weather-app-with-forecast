@@ -23,9 +23,7 @@ function updateWeatherValue(response){
     let timeElement = document.querySelector("#time");
     timeElement.innerHTML= dateFormat(date);
 
-    
-
-    console.log(response.data);
+    getWeatherForecast(response.data.city);
 
 }
 function dateFormat(date){
@@ -46,7 +44,7 @@ function dateFormat(date){
 function searchCityData(city){
     let apiKey = "78b7a4e95c0c3t9a66222f0o3d5f4ee1";
     let apiURL =`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-    console.log(apiURL);
+    
     axios.get(apiURL).then(updateWeatherValue);
 }
 
@@ -57,7 +55,50 @@ function searchButtonFunctionality(event){
     searchCityData(searchInput.value);
 }
 
+function getWeatherForecast(city) {
+    let apiKey = "78b7a4e95c0c3t9a66222f0o3d5f4ee1";
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+    console.log(apiUrl);
+    axios(apiUrl).then(displayWeatherForecast);
+  }
+
+  function dayFormat(time) {
+    let date = new Date(time * 1000);
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  
+    return days[date.getDay()];
+  }
+  
+function displayWeatherForecast(response) {
+    let weatherforecastHtml = "";
+  
+    response.data.daily.forEach(function (day, index) {
+      if (index < 5) {
+        weatherforecastHtml =
+          weatherforecastHtml +
+          `
+        <div class="weather-forecast-day">
+          <div class="weather-forecast-date">${dayFormat(day.time)}</div>
+  
+          <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
+          <div class="weather-forecast-temperatures">
+            <div class="weather-forecast-temperature">
+              <strong>${Math.round(day.temperature.maximum)}&deg</strong>
+            </div>
+            <div class="weather-forecast-temperature">${Math.round(
+              day.temperature.minimum
+            )}&deg</div>
+          </div>
+        </div>
+      `;
+      }
+    });
+  
+    let weatherforecastElement = document.querySelector("#weatherForecast");
+    weatherforecastElement.innerHTML = weatherforecastHtml;
+  }
 
 let searchFormElement =document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchButtonFunctionality);
 searchCityData("Johannesburg");
+
