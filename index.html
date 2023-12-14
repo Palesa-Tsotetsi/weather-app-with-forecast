@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Weather App</title>
+</head>
+<body>
+    <header>
+        <form id="search-form">
+            <label for="city" ><strong>City</strong> </label>
+            <input type="text" id="city" placeholder="Enter a city..." required>
+
+            <input type="submit" value="Search" class="form-button">
+        </form>
+
+    </header>
+    <main>
+        <h1 id="chosenCity"></h1>
+        <p>
+            <div class="weather-data">
+                <div class="weather-container">
+                    <div id="icon" class="icon"></div>
+                      
+                    <div class="temperature" id="temperatureValue"></div>
+                    <div class="unit">&deg;C</div>
+                </div>
+                <br>
+                <div class="details">
+                    Humidity:<strong id="humid"></strong> <br>
+                    Wind:<strong id="wind"></strong>
+                </div>
+
+                <br>
+                <div class="weather-date">
+                   <span id="head">Weather </span> <br>
+                    <span id="time"></span>  <br>
+                    <span id="description"></span>
+                </div>
+
+                <div class ="forecastData" id="weatherForecast"></div>
+            </div>
+        </p>
+
+    </main>
+    <footer>
+        This Project is Coded by
+        <a href="https://github.com/Palesa-Tsotetsi/" target="_blank">Palesa Tsotetsi</a> and can be found on <a href="https://github.com/Palesa-Tsotetsi/Palesa-s-weather-app" target="_blank">Github</a> 
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
