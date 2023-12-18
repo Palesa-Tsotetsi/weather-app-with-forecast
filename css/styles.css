@@ -1,6 +1,6 @@
 header {
     border-bottom: 1px solid #f9f7fe;
-    padding: 0 0 30px 0;
+    padding: 0 0 20px 0;
   }
 
 h1{
@@ -12,7 +12,7 @@ body{
     color: aliceblue;
     max-width: 500px;
     margin: 50px auto;
-    padding:30px ;
+    padding:1px ;
     border-radius: 10px;
     box-shadow:0 30px 50px rgba(56, 6, 173, 0.08) ;
 }
@@ -103,7 +103,7 @@ a{
     align-items: center;
     text-align: center;
     margin: 0 auto;
-    padding-top: 130px;
+    padding-top: 80px;
     position: relative;
     left: -530px;
     
